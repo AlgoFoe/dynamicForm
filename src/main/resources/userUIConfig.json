@@ -1,0 +1,34 @@
+{
+  "fields": {
+    "username": {
+      "label": "Username",
+      "controlType": "text",
+      "placeholder": "Enter your username",
+      "errorMessage": "Username must be at least 3 characters"
+    },
+    "email": {
+      "label": "Email Address",
+      "controlType": "email",
+      "placeholder": "your@email.com",
+      "errorMessage": "Please enter a valid email"
+    },
+    "age": {
+      "label": "Age",
+      "controlType": "number",
+      "placeholder": "0"
+    },
+    "country": {
+      "label": "Country",
+      "controlType": "select",
+      "options": ["USA", "Canada", "Mexico"],
+      "errorMessage": "Please select a country"
+    },
+    "birthDate": {
+      "label": "Date of Birth",
+      "controlType": "date",
+      "errorMessage": "Enter valid date"
+    }
+  },
+  "formTitle": "User Registration",
+  "submitButtonLabel": "Submit"
+}
