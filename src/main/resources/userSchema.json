@@ -1,28 +1,79 @@
 {
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "User",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
+  "title": "User Registration Form",
   "properties": {
     "username": {
       "type": "string",
-      "minLength": 3
+      "minLength": 3,
+      "maxLength": 20,
+      "pattern": "^[a-zA-Z0-9_]+$",
+      "description": "Username must be 3-20 characters, alphanumeric and underscore only"
     },
     "email": {
       "type": "string",
-      "format": "email"
+      "format": "email",
+      "description": "Valid email address"
+    },
+    "password": {
+      "type": "string",
+      "minLength": 8,
+      "description": "Password must be at least 8 characters"
+    },
+    "confirmPassword": {
+      "type": "string",
+      "minLength": 8,
+      "description": "Must match password"
+    },
+    "firstName": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 50,
+      "description": "First name"
+    },
+    "lastName": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 50,
+      "description": "Last name"
     },
     "age": {
       "type": "integer",
-      "minimum": 0
-    },
-    "country": {
-      "type": "string",
-      "enum": ["USA", "Canada", "Mexico"]
+      "minimum": 13,
+      "maximum": 80,
+      "description": "Age must be between 13 and 80"
     },
     "birthDate": {
       "type": "string",
-      "format": "date"
+      "format": "date",
+      "description": "Date of birth"
+    },
+    "country": {
+      "type": "string",
+      "enum": ["USA", "Canada", "UK", "Germany"],
+      "description": "Country of residence"
+    },
+    "gender": {
+      "type": "string",
+      "enum": ["male", "female"],
+      "description": "Gender"
+    },
+    "interests": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": ["technology", "sports", "music", "art", "travel", "reading", "cooking", "gaming"]
+      },
+      "minItems": 1,
+      "maxItems": 5,
+      "description": "Select your interests (1-5)"
+    },
+    "terms": {
+      "type": "boolean",
+      "const": true,
+      "description": "Must accept terms and conditions"
     }
   },
-  "required": ["username", "email", "country"]
+  "required": ["username", "email", "password", "confirmPassword", "firstName", "lastName", "age", "country", "terms"],
+  "additionalProperties": false
 }

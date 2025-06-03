@@ -19,7 +19,6 @@ public class DynamicFormServlet extends HttpServlet {
 
     @Override
     public void init() throws ServletException {
-        // Load JSON schema & UI config once at init
         try {
             schemaJson = readJsonFile("userSchema.json");
             uiConfigJson = readJsonFile("userUIConfig.json");
@@ -31,7 +30,7 @@ public class DynamicFormServlet extends HttpServlet {
     }
 
     private JSONObject readJsonFile(String resourceName) throws IOException, URISyntaxException {
-        // Load from resources folder (src/main/resources)
+        // loading resources folder (src/main/resources)
         var resourceURL = getClass().getClassLoader().getResource(resourceName);
         if (resourceURL == null) {
             throw new IOException("Resource not found: " + resourceName);
@@ -45,19 +44,19 @@ public class DynamicFormServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        // 1. Generate the fields snippet
+        // 1. generate the fields snippet
         String fieldsHtml = FormGenerator.buildFields(schemaJson, uiConfigJson);
 
-        // 2. Extract top-level info from UI config (like title, submit button label)
+        // 2. extract from UI config (like title, submit button label)
         String formTitle = uiConfigJson.optString("formTitle", "Dynamic Form");
         String submitLabel = uiConfigJson.optString("submitButtonLabel", "Submit");
 
-        // 3. Set attributes so JSP can access them via ${...}
+        // 3. setting attributes so JSP can access them
         request.setAttribute("formTitle", formTitle);
         request.setAttribute("formFields", fieldsHtml);
         request.setAttribute("submitLabel", submitLabel);
 
-        // 4. Forward to the JSP
+        // 4. forward to the JSP
         RequestDispatcher dispatcher = request.getRequestDispatcher("/form.jsp");
         dispatcher.forward(request, response);
     }

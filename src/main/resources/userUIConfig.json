@@ -1,34 +1,132 @@
 {
+  "formTitle": "User Registration Form",
+  "submitButtonLabel": "Create Account",
+  "layout": {
+    "theme": "modern",
+    "columns": 2,
+    "spacing": "medium"
+  },
+  "validation": {
+    "showErrorsOnBlur": true,
+    "showSuccessOnValid": true
+  },
   "fields": {
     "username": {
       "label": "Username",
       "controlType": "text",
       "placeholder": "Enter your username",
-      "errorMessage": "Username must be at least 3 characters"
+      "helpText": "3-20 characters, letters, numbers, and underscore only",
+      "order": 1,
+      "width": "full",
+      "icon": "user"
     },
     "email": {
       "label": "Email Address",
       "controlType": "email",
-      "placeholder": "your@email.com",
-      "errorMessage": "Please enter a valid email"
+      "placeholder": "you@example.com",
+      "helpText": "We'll never share your email",
+      "order": 2,
+      "width": "full",
+      "icon": "email"
+    },
+    "password": {
+      "label": "Password",
+      "controlType": "password",
+      "placeholder": "Enter a strong password",
+      "helpText": "Minimum 8 characters",
+      "order": 3,
+      "width": "half",
+      "showStrengthIndicator": true,
+      "icon": "lock"
+    },
+    "confirmPassword": {
+      "label": "Confirm Password",
+      "controlType": "password",
+      "placeholder": "Re-enter your password",
+      "helpText": "Must match your password",
+      "order": 4,
+      "width": "half",
+      "icon": "lock"
+    },
+    "firstName": {
+      "label": "First Name",
+      "controlType": "text",
+      "placeholder": "Your first name",
+      "order": 5,
+      "width": "half",
+      "icon": "user"
+    },
+    "lastName": {
+      "label": "Last Name",
+      "controlType": "text",
+      "placeholder": "Your last name",
+      "order": 6,
+      "width": "half",
+      "icon": "user"
     },
     "age": {
       "label": "Age",
       "controlType": "number",
-      "placeholder": "0"
-    },
-    "country": {
-      "label": "Country",
-      "controlType": "select",
-      "options": ["USA", "Canada", "Mexico"],
-      "errorMessage": "Please select a country"
+      "placeholder": "Your age",
+      "order": 7,
+      "width": "half",
+      "min": 13,
+      "max": 120,
+      "icon": "calendar"
     },
     "birthDate": {
       "label": "Date of Birth",
       "controlType": "date",
-      "errorMessage": "Enter valid date"
+      "order": 8,
+      "width": "half",
+      "icon": "calendar"
+    },
+    "country": {
+      "label": "Country",
+      "controlType": "select",
+      "placeholder": "Select your country",
+      "options": ["USA", "Canada", "UK", "Germany"],
+      "order": 9,
+      "width": "half",
+      "icon": "globe"
+    },
+    "gender": {
+      "label": "Gender",
+      "controlType": "radio",
+      "options": [
+        {"value": "male", "label": "Male"},
+        {"value": "female", "label": "Female"}
+      ],
+      "order": 10,
+      "width": "half",
+      "layout": "horizontal"
+    },
+    "interests": {
+      "label": "Interests",
+      "controlType": "checkbox",
+      "options": [
+        {"value": "technology", "label": "Technology"},
+        {"value": "sports", "label": "Sports"},
+        {"value": "music", "label": "Music"},
+        {"value": "art", "label": "Art"},
+        {"value": "travel", "label": "Travel"},
+        {"value": "reading", "label": "Reading"},
+        {"value": "cooking", "label": "Cooking"},
+        {"value": "gaming", "label": "Gaming"}
+      ],
+      "order": 11,
+      "width": "full",
+      "helpText": "Select 1-5 interests",
+      "layout": "grid",
+      "columns": 4
+    },
+    "terms": {
+      "label": "I agree to the Terms and Conditions",
+      "controlType": "checkbox",
+      "helpText": "You must accept our terms to continue",
+      "order": 13,
+      "width": "full",
+      "required": true
     }
-  },
-  "formTitle": "User Registration",
-  "submitButtonLabel": "Submit"
+  }
 }
